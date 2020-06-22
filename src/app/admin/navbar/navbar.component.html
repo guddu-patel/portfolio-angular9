@@ -1,0 +1,14 @@
+<nav class="navbar navbar-inverse border-0">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" [routerLink]="'/admin/dashboard'">Welcome</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a *ngIf="logged" (click)="logout()"><span class="ion ion-log-out"></span> Logout</a>
+                <a *ngIf="!logged" (click)=login()><span class="ion ion-log-out"></span> login</a>
+            </li>
+        </ul>
+    </div>
+</nav>

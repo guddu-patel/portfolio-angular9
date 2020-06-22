@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h3>All post(s) <a [routerLink]="'/admin/post'" class="btn btn-success pull-right" style="padding: 5px;">Add new</a>
+    </h3>
+    <div class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of [1,2,3,4,5]">
+                    <td>{{i}}</td>
+                    <td>Anna</td>
+                    <td>Pitt</td>
+                    <td>35</td>
+                    <td>New York</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a [routerLink]="['/admin/post',i]" type="button" class="btn btn-primary">Edit</a>
+                            <a type="button" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
