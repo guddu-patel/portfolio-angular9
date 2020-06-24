@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 declare function initJQ(): any;
 @Component({
   selector: 'app-dashboard',

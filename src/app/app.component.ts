@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as alertify from 'alertify.js';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,5 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'myProfile';
   ngOnInit() {
+    // this.InitialSetting();
+  }
+  InitialSetting() {
+    alertify.logPosition('bottom right');//example
   }
 }

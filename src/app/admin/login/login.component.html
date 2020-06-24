@@ -2,7 +2,7 @@
 <h3 class="text-center">Admin login</h3>
 <hr>
 <div class="col-sm-6 col-sm-offset-3">
-    <form name="loginForm" id="loginForm" [formGroup]="loginForm">
+    <form name="loginForm" id="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">

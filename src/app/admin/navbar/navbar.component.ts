@@ -8,12 +8,16 @@ import { LoginService } from '../service/login.service';
 })
 export class NavbarComponent implements OnInit {
   logged = false;
+  userDetail = null;
   constructor(private loginSer: LoginService) { }
 
   ngOnInit(): void {
     this.logged = this.loginSer.loggedUser;
+    this.userDetail = this.loginSer.userDetail;
     this.loginSer.getLoggedEvent.subscribe(() => {
       this.logged = this.loginSer.loggedUser;
+      this.userDetail = this.loginSer.userDetail;
+
     })
   }
   logout() {

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // baseUrl: "https://jsonplaceholder.typicode.com"
+  baseUrl: "https://secure-sierra-98019.herokuapp.com/api"
+
 };
 
 /*
