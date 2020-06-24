@@ -285,6 +285,9 @@ function initJQ() {
           required: true,
           email: true
         },
+        contact: {
+          required: true,
+        },
         project: {
           required: true
         },
@@ -301,6 +304,9 @@ function initJQ() {
         email: {
           required: "Please enter a valid email!"
         },
+        contact: {
+          required: "Please enter a valid mobile number!"
+        },
 
         project: {
           required: "Please select a service!"
@@ -314,8 +320,9 @@ function initJQ() {
         $(form).ajaxSubmit({
           type: "POST",
           data: $(form).serialize(),
-          url: "mail.php",
+          url: "http://shayariterminal.uphero.com/apis/portfolio-mail.php",
           success: function () {
+            debugger;
             $('#messageForm').addClass('hide');
             $('#messageForm').fadeTo("slow", 0.15, function () {
               $('#success').fadeIn();
