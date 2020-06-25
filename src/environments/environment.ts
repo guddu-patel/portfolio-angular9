@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // baseUrl: "https://jsonplaceholder.typicode.com"
-  baseUrl: "https://secure-sierra-98019.herokuapp.com/api"
+  baseUrl: "https://node-js-resume-api.herokuapp.com/api"
 
 };
 

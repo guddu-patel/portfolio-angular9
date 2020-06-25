@@ -39,7 +39,6 @@ export class LoaderService {
     }));
   }
   checkInternetConnection() {
-    debugger;
     if (!this.connectionStatus) {
       this.router.navigate(['/error']);
       alertify.error('No internet! please check your connection');

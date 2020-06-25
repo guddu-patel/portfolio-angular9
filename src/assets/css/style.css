@@ -125,7 +125,7 @@ label.error{color: #e11c1c;position: absolute;top: 0;right:5px;z-index: 9;font-w
 .about-left{z-index: 999; margin:50px -30px 50px 0; padding-left:20px; color: #f5f4f1; box-shadow:0 1px 3px rgba(0,0,0,.05); -webkit-box-shadow:0 1px 3px rgba(0,0,0,.05); -moz-box-shadow:0 1px 3px rgba(0,0,0,.05);}
 .about-left-text{background: #ef5c4b; padding:30px; text-align:center;}
 .about-left-text p{margin-bottom:0; color:#2a1f1d; }
-.about-mid{background:url(../images/about.jpg) no-repeat center top; background-size:cover;}
+.about-mid{background:url(../images/guddu.jpg) no-repeat center top; background-size:cover;}
 .about-right{ background: #2a1f1d;}
 .about-right-text{padding:30px; color:#f5f4f1;}
 .about-right-text h6{margin-bottom:5px; font-weight:400; font-size:14px; position:relative;}

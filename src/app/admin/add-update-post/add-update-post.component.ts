@@ -10,7 +10,7 @@ import { ApiHandlerService } from 'src/app/api-handler.service';
 export class AddUpdatePostComponent implements OnInit {
 
   postForm: FormGroup;
-  selectedFile: string = "Choose a file";
+  selectedFile: any = { name: "Choose a file" };
   editMode = false;
   submitted = false;
   constructor(private fb: FormBuilder,
@@ -37,7 +37,7 @@ export class AddUpdatePostComponent implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       slug: [],
-      image: []
+      post_image: ['', Validators.required]
     })
     this.editMode = false;
   }
@@ -52,20 +52,24 @@ export class AddUpdatePostComponent implements OnInit {
   }
   sendPost() {
     this.submitted = true;
-
+    let formData = new FormData();
+    let result = Object.assign({}, this.postForm.value);
+    for (let o in result) {
+      formData.append(o, result[o])
+    }
+    formData.set('post_image', this.selectedFile);
+    formData.set('slug', this.convertToSlug(this.postForm.value.title));
+    debugger;
     if (!this.editMode) {
 
-      this.postForm.value.slug = this.convertToSlug(this.postForm.value.title);
-      delete this.postForm.value._id;
-      delete this.postForm.value.image;
-
-      this.api.post('/posts', this.postForm.value).subscribe(data => {
+      formData.delete('_id');
+      this.api.post('/posts', formData).subscribe(data => {
         console.log("post created", data);
         this.successPost();
       })
     }
     else {
-      this.api.put('/posts/' + this.postForm.value.id, this.postForm.value).subscribe(data => {
+      this.api.put('/posts/' + this.postForm.value.id, formData).subscribe(data => {
         console.log("post updated", data);
         this.successPost();
 
@@ -78,8 +82,12 @@ export class AddUpdatePostComponent implements OnInit {
     this.router.navigate(['/admin/dashboard']);
   }
 
-  changeFile() {
-    this.selectedFile = this.postForm.value.image;
+  changeFile(event) {
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.selectedFile = file;
+    }
   }
   convertToSlug(Text) {
     return Text

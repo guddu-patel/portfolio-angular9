@@ -14,9 +14,9 @@ export class AdminDashboardComponent implements OnInit {
     this.getPosts();
   }
   getPosts() {
-    this.api.get('/posts').subscribe(data => {
+    this.api.get('/posts').subscribe((data: any) => {
       console.log(data);
-      this.posts = data;
+      this.posts = data.posts;
     });
   }
   deletePost(id) {
