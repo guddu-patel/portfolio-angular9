@@ -144,7 +144,7 @@ function initJQ() {
 
 
 
-    $('.recent-blog-list').slick({
+    $('#recent-blog-list').slick({
       dots: false,
       infinite: true,
       speed: 300,

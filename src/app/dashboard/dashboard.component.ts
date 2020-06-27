@@ -9,7 +9,8 @@ declare function initJQ(): any;
 export class DashboardComponent implements OnInit {
 
   constructor() { }
-  ngOnInit(): void {
+  ngOnInit() { }
+  ngAfterViewInit(): void {
     // called custome js function to initialize after component ready
     initJQ();
   }

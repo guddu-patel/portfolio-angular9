@@ -26,14 +26,12 @@ export class LoaderService {
     this.subscriptions.push(this.onlineEvent.subscribe(event => {
       this.connectionStatusMessage = 'Connected to internet! You are online';
       this.connectionStatus = true;
-      debugger;
       this.location.back();
       alertify.success(this.connectionStatusMessage)
     }));
     this.subscriptions.push(this.offlineEvent.subscribe(e => {
       this.connectionStatusMessage = 'Connection lost! You are offline';
       this.connectionStatus = false;
-      debugger;
       this.router.navigate(['/error']);
       alertify.error(this.connectionStatusMessage);
     }));
