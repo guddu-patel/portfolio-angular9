@@ -7,8 +7,6 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 
 
@@ -26,8 +24,6 @@ const components: any = [
   PageNotFoundComponent,
   FooterComponent,
   LoadingSpinnerComponent,
-  PostListComponent,
-  PostDetailComponent,
   BlogComponent,
   BlogListComponent,
   BlogDetailComponent

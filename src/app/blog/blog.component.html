@@ -9,18 +9,16 @@
         </div>
         <div class="row mar-30">
             <ul class="recent-blog-list" [attr.id]="location.path()==''?'recent-blog-list':''">
-                <li *ngFor="let blog of blogs;let i=index">
-                    {{i+1}}s
-                    <div class="blog-post-box os-animation" data-os-animation="fadeInUp"
-                        data-os-animation-delay="{{i+1}}s">
-                        <div class="blog-post-img"> <a href="#"><img src="assets/images/blog1.jpg" alt="" /> <b
-                                    class="post-date">24th April <span>2016</span></b> </a> </div>
+                <li *ngFor="let blog of blogs;trackBy: trackblog;let i=index" [routerLink]="['/blog/detail',blog._id]">
+                    <div class="blog-post-box">
+                        <div class="blog-post-img"><img src="{{imgBase}}/{{blog.post_image}}" alt=""
+                                style="height: 250px;" /> <b class="post-date">{{blog.updatedAt | date:'E, d MMM'}}
+                                <span>{{blog.updatedAt | date:'y'}}</span></b>
+                        </div>
                         <div class="blog-content">
-                            <p class="category">Category</p>
-                            <h5><a href="#">{{blog}}Inventore adipisci excepturi dolorum</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore adipisci
-                                excepturi dolorum. Lorem
-                                ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p class="category">All</p>
+                            <h5 class="lineText1"><a href="#">{{blog.title}}</a></h5>
+                            <p class="lineText5">{{blog.description}}</p>
                         </div>
                     </div>
                 </li>
@@ -57,8 +55,9 @@
                 <a *ngIf="location.path()==''" [routerLink]="['/blog/list']" href="#"
                     class="btn btn-default btn-lg btn-block os-animation" data-os-animation="fadeInUp"
                     data-os-animation-delay="0.2s">View all posts</a>
-                <a *ngIf="location.path() !=''" href="#" class="btn btn-default btn-lg btn-block os-animation"
-                    data-os-animation="fadeInUp" data-os-animation-delay="0.2s">Load more</a>
+                <button *ngIf="location.path() !='' && activePage!=-1" (click)="getPosts()"
+                    class="btn btn-default btn-lg btn-block os-animation" data-os-animation="fadeInUp"
+                    data-os-animation-delay="0.2s">Load more</button>
             </div>
         </div>
     </div>

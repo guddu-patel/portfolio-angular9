@@ -8,6 +8,7 @@
                 <tr>
                     <th>S.N.</th>
                     <th>ID</th>
+                    <th>Image</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Slug</th>
@@ -19,18 +20,27 @@
                 <tr *ngFor="let post of posts;let i=index; ">
                     <td>{{i+1}}</td>
                     <td>{{post._id}}</td>
+                    <td><img style="width: 80px;max-height:50px" src="{{imgBase}}/{{post.post_image}}" async alt="">
+                    </td>
                     <td>{{post.title}}</td>
-                    <td>{{post.description}}</td>
+                    <td title="{{post.description}}">
+                        <p class="lineText">{{post.description}}</p>
+                    </td>
                     <td>{{post.slug}}</td>
                     <td>{{post.updatedAt}}</td>
-                    <td>
+                    <td style="min-width: 130px;">
                         <div class="btn-group btn-group-sm">
-                            <a [routerLink]="['/admin/post',post.id]" type="button" class="btn btn-primary">Edit</a>
-                            <a type="button" (click)="deletePost(post.id)" class="btn btn-danger">Delete</a>
+                            <a [routerLink]="['/admin/post',post._id]" type="button" class="btn btn-primary">Edit</a>
+                            <a type="button" (click)="deletePost(post._id)" class="btn btn-danger">Delete</a>
                         </div>
                     </td>
                 </tr>
-                <tr *ngIf="!posts" colspan=5 class="text-center">Loading...</tr>
+                <tr *ngIf="!posts" colspan=8 class="text-center">
+                    <td colspan=8>Loading</td>
+                </tr>
+                <tr *ngIf="posts && posts.length==0" class="text-center">
+                    <td colspan=8>No post available</td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -58,7 +58,7 @@ export class ApiinterceptInterceptor implements HttpInterceptor {
           debugger;
           errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message || error.error}`;
           if (error.status == 401 && error.statusText == "Unauthorized") {
-            alertify.error("Token expired plese login again.");
+            alertify.error("Token expired please login again.");
             this.loginSer.logout();
             this.router.navigate(['/admin/login']);
             return throwError(errorMessage);

@@ -5,7 +5,7 @@ import { environment } from "../environments/environment";
   providedIn: 'root'
 })
 export class ApiHandlerService {
-  baseUrl = environment.baseUrl;
+  baseUrl = environment.baseUrl + '/api';
   constructor(private http: HttpClient) { }
   get(url) {
     url = this.baseUrl + url;

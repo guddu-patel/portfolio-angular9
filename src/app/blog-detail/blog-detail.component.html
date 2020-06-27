@@ -1,1 +1,129 @@
-<p>blog-detail works!</p>
+<app-navbar></app-navbar>
+<section id="blog" class="section bg">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-8">
+                <div *ngIf="selectedPost" class="blog-post-box">
+                    <div class="blog-post-img"> <img src="{{imgBase}}/{{selectedPost.post_image}}" alt="" />
+                        <b class="post-date">{{selectedPost.updatedAt | date:'E, d MMM'}}
+                            <span>{{selectedPost.updatedAt | date:'y'}}</span></b> </div>
+                    <div class="blog-content">
+                        <p class="category">All</p>
+                        <h5>{{selectedPost.title}}</h5>
+                        <p>{{selectedPost.description}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!selectedPost" class="text-center">
+                    Loading
+                </div>
+                <!-- displaying most viewed post -->
+                <div *ngIf="otherPosts">
+                    <br>
+                    <h3>You may also like</h3>
+                    <div class="blog-post-box">
+
+                    </div>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item" *ngFor="let latest of otherPosts.mostlyViewedPosts;let f=first"
+                                [class.active]="f">
+                                <div class="well" style="border-radius: 0;margin-bottom: 0;">
+                                    <div class="media" [routerLink]="['/blog/detail',latest._id]">
+                                        <a class="pull-left">
+                                            <img class="media-object" style="width: 50px;height: 50px;"
+                                                src="http://placekitten.com/150/150">
+                                        </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading lineText1">{{latest.title}}</h5>
+                                            <p class="lineText1" style="margin-bottom: 5px;">{{latest.description}}</p>
+                                            <ul class="list-inline list-unstyled">
+                                                <li><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                        {{latest.updatedAt|timeAgo}}
+                                                    </span></li>
+                                                <!-- <li>|</li>
+                                            <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                                            <li>|</li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <span><i class="fa fa-facebook-square"></i></span>
+                                                <span><i class="fa fa-twitter-square"></i></span>
+                                                <span><i class="fa fa-google-plus-square"></i></span>
+                                            </li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"
+                            style="line-height: 130px;">
+                            <span class="fa fa fa-arrow-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next"
+                            style="line-height: 130px;">
+                            <span class="fa fa fa-arrow-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <!-- displaying latest post -->
+                <ng-container *ngIf="otherPosts">
+                    <h3>Latest post</h3>
+                    <div class="blog-post-box" *ngFor="let latest of otherPosts.latestPosts">
+                        <div class="well" style="border-radius: 0;">
+                            <div class="media" [routerLink]="['/blog/detail',latest._id]">
+                                <a class="pull-left">
+                                    <img class="media-object" style="width: 50px;height: 50px;"
+                                        src="http://placekitten.com/150/150">
+                                </a>
+                                <div class="media-body">
+                                    <h5 class="media-heading lineText1">{{latest.title}}</h5>
+                                    <p class="lineText1" style="margin-bottom: 5px;">{{latest.description}}</p>
+                                    <ul class="list-inline list-unstyled">
+                                        <li><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                {{latest.updatedAt|timeAgo}}
+                                            </span></li>
+                                        <!-- <li>|</li>
+                                    <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                                    <li>|</li>
+                                    <li>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    </li>
+                                    <li>|</li>
+                                    <li>
+                                        <span><i class="fa fa-facebook-square"></i></span>
+                                        <span><i class="fa fa-twitter-square"></i></span>
+                                        <span><i class="fa fa-google-plus-square"></i></span>
+                                    </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <div *ngIf="!otherPosts" class="text-center">
+                    Loading Latest post....
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<app-footer></app-footer>

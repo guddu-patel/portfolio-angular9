@@ -3,7 +3,7 @@
 <hr>
 <div class="col-sm-6 col-sm-offset-3">
     <form [formGroup]="postForm" id="postForm" (ngSubmit)="sendPost()" enctype="multipart/form-data" method="post">
-        <input type="hidden" name="id" id="id">
+        <!-- <input type="hidden" name="_id" id="_id" formControlName='_id'> -->
         <div class="form-group">
             <label for="email">Title:</label>
             <input formControlName="title" type="text" class="form-control" id="title" name="title"
@@ -19,17 +19,21 @@
             <div class="input-group">
                 <input type="file" class="form-control hidden" id="post_image" placeholder="Enter post tile"
                     formControlName="post_image" (change)="changeFile($event)" accept="image/*">
-                <input type="text" disabled class="form-control" placeholder="{{selectedFile.name}}">
+                <input type="text" disabled class="form-control"
+                    placeholder="{{selectedFile?selectedFile.name:'Choose file'}}">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default" style="padding: 10px;"
                         onclick="$('#post_image').click()">Browse
                     </button>
                 </div>
             </div>
+            <img *ngIf="imagePreview" src="{{imagePreview}}" class="img-thumbnail previewImage" alt="Image err">
         </div>
         <!-- <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
         </div> -->
         <button type="submit" [disabled]="submitted || postForm.invalid" class="btn btn-default">Submit</button>
+        <button [routerLink]="['/admin/dashboard']" type="submit" class="btn btn-danger"
+            style="margin-left: 5px;">Cancel</button>
     </form>
 </div>

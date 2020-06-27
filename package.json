@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "alertify.js": "^1.0.12",
+    "date-fns": "^2.14.0",
     "ng-connection-service": "^1.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

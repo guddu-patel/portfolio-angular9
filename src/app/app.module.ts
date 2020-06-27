@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiinterceptInterceptor } from './interceptot/apiintercept.interceptor';
+import { TimeAgoPipe } from './pipe/time-ago.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     appRoutingComponents,
+    TimeAgoPipe,
 
   ],
   imports: [
