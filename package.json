@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@ckeditor/ckeditor5-angular": "^1.2.3",
+    "@ckeditor/ckeditor5-build-classic": "^20.0.0",
     "alertify.js": "^1.0.12",
     "date-fns": "^2.14.0",
     "ng-connection-service": "^1.0.4",

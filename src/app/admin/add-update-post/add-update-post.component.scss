@@ -3,3 +3,6 @@
     max-height: 100px;
     margin-top: 5px;
 }
+:host ::ng-deep .ck-editor__editable_inline {
+    height: 100px;
+}

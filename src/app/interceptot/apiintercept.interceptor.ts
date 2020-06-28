@@ -63,6 +63,8 @@ export class ApiinterceptInterceptor implements HttpInterceptor {
             this.router.navigate(['/admin/login']);
             return throwError(errorMessage);
           }
+          if (error.status == 503)
+            errorMessage = error.statusText;
         }
         debugger;
         window.alert(errorMessage);

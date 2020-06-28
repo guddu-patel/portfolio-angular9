@@ -1,7 +1,7 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="row" style="margin: 0;">
-    <h3 class="text-center">{{editMode?'Edit':'Add'}} post</h3>
-    <hr>
+    <h5 class="text-center">{{editMode?'Edit':'Add'}} post</h5>
+    <hr class="m-0">
     <div class="col-sm-6 col-sm-offset-3">
         <form [formGroup]="postForm" id="postForm" (ngSubmit)="sendPost()" enctype="multipart/form-data" method="post">
             <!-- <input type="hidden" name="_id" id="_id" formControlName='_id'> -->
@@ -13,7 +13,13 @@
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea formControlName="description" type="text" class="form-control" id="description"
-                    name="description" placeholder="Enter description"></textarea>
+                    name="description" placeholder="Enter description" style="height: 75px;"></textarea>
+
+            </div>
+            <div class="form-group">
+                <label for="description">Page content:</label>
+                <ckeditor [editor]="Editor" formControlName="page_content" id="page_content" name="page_content"
+                    [config]="config"></ckeditor>
             </div>
             <div class="form-group">
                 <label for="post_image">Post image:</label>
@@ -39,5 +45,6 @@
         </form>
     </div>
 </div>
+<br>
 <br>
 <app-admin-footer></app-admin-footer>

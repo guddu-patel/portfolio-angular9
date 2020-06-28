@@ -12,6 +12,8 @@
                         <p class="category">All</p>
                         <h5>{{selectedPost.title}}</h5>
                         <p>{{selectedPost.description}}</p>
+                        <div *ngIf="selectedPost.page_content" [innerHTML]="selectedPost.page_content"></div>
+
                     </div>
                 </div>
                 <div *ngIf="!selectedPost" class="text-center">

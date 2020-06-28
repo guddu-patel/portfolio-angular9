@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiHandlerService } from 'src/app/api-handler.service';
 import { environment } from "../../../environments/environment";
 import * as alertify from 'alertify.js';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-update-post',
@@ -11,6 +12,9 @@ import * as alertify from 'alertify.js';
   styleUrls: ['./add-update-post.component.scss']
 })
 export class AddUpdatePostComponent implements OnInit {
+  public Editor = ClassicEditor;
+  config = { placeholder: 'Type the content here!' };
+  ckData = "";
   imgBase = environment.baseUrl;
   postForm: FormGroup;
   selectedFile: any = null;
@@ -42,6 +46,7 @@ export class AddUpdatePostComponent implements OnInit {
       // _id: [],
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      page_content: [],
       slug: [],
       post_image: ['', Validators.required]
     })
@@ -52,7 +57,8 @@ export class AddUpdatePostComponent implements OnInit {
       // _id: data._id,
       title: data.title,
       slug: data.slug,
-      description: data.description
+      description: data.description,
+      page_content: data.page_content
     });
     this.postForm.get('post_image').clearValidators();
     this.postForm.get('post_image').updateValueAndValidity();
@@ -61,6 +67,7 @@ export class AddUpdatePostComponent implements OnInit {
     this.editMode = true;
   }
   sendPost() {
+    debugger;
     this.submitted = true;
     let formData = new FormData();
     let result = Object.assign({}, this.postForm.value);
