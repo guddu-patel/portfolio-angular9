@@ -1,0 +1,22 @@
+<ul class="pagination">
+    <li *ngIf="activePage != 1" (click)="paginate(activePage-1)">
+        <a><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+    </li>
+    <li *ngIf="activePage == 1" class="disabled">
+        <a><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+    </li>
+    <ng-container *ngFor="let item of [].constructor(totalPages); let i = index">
+
+        <li *ngIf="i+1 == activePage" class="active">
+            <a>{{i+1}}</a>
+        </li>
+        <li *ngIf="i+1 != activePage" (click)="paginate(i+1)">
+            <a>{{i+1}}</a>
+        </li>
+    </ng-container>
+    <li *ngIf="activePage == totalPages" class="disabled"><a><i class="fa fa-chevron-circle-right"
+                aria-hidden="true"></i></a></li>
+    <li *ngIf="activePage != totalPages" (click)="paginate(activePage+1)"><a><i class="fa fa-chevron-circle-right"
+                aria-hidden="true"></i></a></li>
+
+</ul>

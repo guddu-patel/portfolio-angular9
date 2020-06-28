@@ -11,16 +11,25 @@ import * as alertify from 'alertify.js';
 export class AdminDashboardComponent implements OnInit {
   posts: any;
   imgBase = environment.baseUrl;
+  activePage = 1;
+  limit = 10;
+  originalPost = null;
   constructor(private api: ApiHandlerService) { }
 
   ngOnInit(): void {
     this.getPosts();
   }
   getPosts() {
-    this.api.get('/posts').subscribe((data: any) => {
+    let url = '/posts?page=' + this.activePage + '&limit=' + this.limit;
+    this.api.get(url).subscribe((data: any) => {
       console.log('All Posts:', data.posts);
-      this.posts = data.posts;
+      this.originalPost = data.posts;
+      this.posts = data.posts.docs;
     });
+  }
+  paginate(page) {
+    this.activePage = page;
+    this.getPosts();
   }
   deletePost(id) {
     debugger;

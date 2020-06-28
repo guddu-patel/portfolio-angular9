@@ -44,4 +44,11 @@
             </tbody>
         </table>
     </div>
+    <!-- pagination -->
+    <div class="text-center" *ngIf="originalPost">
+
+        <app-pagination [pages]="originalPost.pages" (pageChange)="paginate($event)"></app-pagination>
+
+    </div>
 </div>
+<app-footer></app-footer>

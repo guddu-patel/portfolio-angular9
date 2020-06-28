@@ -31,12 +31,13 @@ export class BlogComponent implements OnInit {
 
   }
   getPosts() {
-    this.api.get('/posts?page=' + this.activePage).subscribe((data: any) => {
+    let url = '/posts?page=' + this.activePage + '&limit=9';
+    this.api.get(url).subscribe((data: any) => {
       console.log('All Posts:', data.posts);
       debugger;
       this.blogs = this.blogs.concat(data.posts.docs);
-      // this.activePage = data.posts.pages == this.activePage ? -1 : (data.posts.page + 1);
-      this.activePage = data.posts.pages <= this.activePage ? -1 : (this.activePage + 1);
+      this.activePage = data.posts.pages <= this.activePage ? -1 : (data.posts.page + 1);
+      // this.activePage = data.posts.pages <= this.activePage ? -1 : (this.activePage + 1);
       if (this.location.path() == '') {
         this.blogs = this.blogs.slice(0, 3);
       }
