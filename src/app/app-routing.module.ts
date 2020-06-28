@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 
@@ -22,7 +22,7 @@ const components: any = [
   NavbarComponent,
   DashboardComponent,
   PageNotFoundComponent,
-  // FooterComponent,
+  FooterComponent,
   LoadingSpinnerComponent,
   BlogComponent,
   BlogListComponent,

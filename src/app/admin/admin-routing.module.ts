@@ -5,6 +5,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { AddUpdatePostComponent } from './add-update-post/add-update-post.component';
+import { AdminFooterComponent } from './admin-footer/admin-footer.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 
 const routes: Routes = [
   { path: 'admin/login', component: LoginComponent },
@@ -14,9 +16,11 @@ const routes: Routes = [
   // { path: 'admin/post', component: AddUpdatePostComponent, canActivate: [AuthGuard] },
 ];
 const components: any = [
+  AdminNavbarComponent,
   AdminDashboardComponent,
   LoginComponent,
-  AddUpdatePostComponent
+  AddUpdatePostComponent,
+  AdminFooterComponent
 ];
 
 @NgModule({

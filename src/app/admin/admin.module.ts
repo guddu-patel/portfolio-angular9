@@ -2,22 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule, adminRoutingComponents } from './admin-routing.module';
-import { NavbarComponent } from './navbar/navbar.component';
 
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoginService } from './service/login.service';
-import { FooterComponent } from '../footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 
 @NgModule({
-  declarations: [adminRoutingComponents, NavbarComponent, FooterComponent, PaginationComponent],
+  declarations: [adminRoutingComponents, PaginationComponent, AdminNavbarComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule
 
   ],
-  exports: [FooterComponent, PaginationComponent],
+  exports: [PaginationComponent],
   providers: [LoginService]
 })
 export class AdminModule { }
