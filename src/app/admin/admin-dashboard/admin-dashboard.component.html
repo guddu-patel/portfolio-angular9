@@ -3,6 +3,32 @@
 <div class="container">
     <h3>All post(s) <a [routerLink]="'/admin/post'" class="btn btn-success pull-right" style="padding: 5px;">Add new</a>
     </h3>
+    <div class="form-inline row">
+        <div class="col-sm-12 form-group">
+
+            <label for="category" class="col-form-label">Category:</label>&nbsp;&nbsp;
+            <div class="input-group input-group">
+                <select name="category" id="category" class="form-control" [(ngModel)]="category" (change)='getPosts()'
+                    style="height: 30px;">
+                    <option value="" selected>Show all</option>
+                    <option *ngFor="let category of categories" [value]="category.toLowerCase()"
+                        class="text-capitalize">
+                        {{category}}</option>
+                </select>
+            </div>
+            <!-- </div>
+        <div class="col-sm-6"> -->
+            <!-- &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="category" class=" col-form-label">Search:</label>&nbsp;&nbsp;
+            <div class="input-group input-group">
+                <input type="text" name="category" id="category" class="form-control" [(ngModel)]="category">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-success" style="padding: 9px;" (click)='getPosts()'>Search</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
     <div class="table-responsive ">
         <table class="table table-striped">
             <thead>
@@ -12,6 +38,7 @@
                     <th>Image</th>
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Catedory</th>
                     <th>Slug</th>
                     <th>Posted At</th>
                     <th>Action</th>
@@ -27,6 +54,7 @@
                     <td title="{{post.description}}">
                         <p class="lineText">{{post.description}}</p>
                     </td>
+                    <td class="text-capitalize">{{post.category||'All'}}</td>
                     <td>{{post.slug}}</td>
                     <td>{{post.updatedAt}}</td>
                     <td style="min-width: 130px;">

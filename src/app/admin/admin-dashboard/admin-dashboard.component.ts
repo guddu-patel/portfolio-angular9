@@ -11,16 +11,18 @@ import * as alertify from 'alertify.js';
 export class AdminDashboardComponent implements OnInit {
   posts: any;
   imgBase = environment.baseUrl;
+  categories = environment.postCategory;
   activePage = 1;
   limit = 10;
   originalPost = null;
+  category = '';
   constructor(private api: ApiHandlerService) { }
 
   ngOnInit(): void {
     this.getPosts();
   }
   getPosts() {
-    let url = '/posts?page=' + this.activePage + '&limit=' + this.limit;
+    let url = '/posts?page=' + this.activePage + '&limit=' + this.limit + '&category=' + this.category;
     this.api.get(url).subscribe((data: any) => {
       console.log('All Posts:', data.posts);
       this.originalPost = data.posts;
@@ -32,7 +34,6 @@ export class AdminDashboardComponent implements OnInit {
     this.getPosts();
   }
   deletePost(id) {
-    debugger;
     if (confirm("Are you sure to delete this post?")) {
 
       this.api.delete('/posts/' + id).subscribe(data => {

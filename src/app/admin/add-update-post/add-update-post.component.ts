@@ -22,6 +22,7 @@ export class AddUpdatePostComponent implements OnInit {
   editMode = false;
   submitted = false;
   activeId = null;
+  categories = environment.postCategory;
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private api: ApiHandlerService,
@@ -47,6 +48,7 @@ export class AddUpdatePostComponent implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       page_content: [],
+      category: ['', Validators.required],
       slug: [],
       post_image: ['', Validators.required]
     })
@@ -54,16 +56,17 @@ export class AddUpdatePostComponent implements OnInit {
   }
   patchFormValue(data) {
     this.postForm.patchValue({
-      // _id: data._id,
       title: data.title,
       slug: data.slug,
       description: data.description,
-      page_content: data.page_content
+      page_content: data.page_content,
+      category: data.category.toLowerCase() || 'all'
     });
     this.postForm.get('post_image').clearValidators();
     this.postForm.get('post_image').updateValueAndValidity();
-    // this.selectedFile.name = data.post_image;
-    this.imagePreview = this.imgBase + '/' + data.post_image;
+    if (data.post_image) {
+      this.imagePreview = this.imgBase + '/' + data.post_image;
+    }
     this.editMode = true;
   }
   sendPost() {

@@ -21,20 +21,34 @@
                 <ckeditor [editor]="Editor" formControlName="page_content" id="page_content" name="page_content"
                     [config]="config"></ckeditor>
             </div>
-            <div class="form-group">
-                <label for="post_image">Post image:</label>
-                <div class="input-group">
-                    <input type="file" class="form-control hidden" id="post_image" placeholder="Enter post tile"
-                        formControlName="post_image" (change)="changeFile($event)" accept="image/*">
-                    <input type="text" disabled class="form-control"
-                        placeholder="{{selectedFile?selectedFile.name:'Choose file'}}">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default" style="padding: 10px;"
-                            onclick="$('#post_image').click()">Browse
-                        </button>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="post_image">Post image:</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control hidden" id="post_image" placeholder="Enter post tile"
+                            formControlName="post_image" (change)="changeFile($event)" accept="image/*">
+                        <input type="text" disabled class="form-control"
+                            placeholder="{{selectedFile?selectedFile.name:'Choose file'}}">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" style="padding: 10px;"
+                                onclick="$('#post_image').click()">Browse
+                            </button>
+                        </div>
+
                     </div>
+                    <img *ngIf="imagePreview" src="{{imagePreview}}" class="img-thumbnail previewImage" alt="Image err">
                 </div>
-                <img *ngIf="imagePreview" src="{{imagePreview}}" class="img-thumbnail previewImage" alt="Image err">
+                <div class="form-group col-sm-6">
+                    <label for="post_image">Category:</label>
+
+                    <select name="category" id="category" class="form-control" required formControlName="category">
+                        <option value="" disabled selected>Select category</option>
+                        <option value="all">All</option>
+                        <option *ngFor="let category of categories" [value]="category.toLowerCase()"
+                            class="text-capitalize">
+                            {{category}}</option>
+                    </select>
+                </div>
             </div>
             <!-- <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
