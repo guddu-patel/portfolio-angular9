@@ -31,7 +31,7 @@ export class BlogComponent implements OnInit {
 
   }
   getPosts() {
-    let url = '/posts?page=' + this.activePage + '&limit=110';
+    let url = '/posts?page=' + this.activePage + '&limit=10';
     this.api.get(url).subscribe((data: any) => {
       console.log('All Posts:', data.posts);
       debugger;

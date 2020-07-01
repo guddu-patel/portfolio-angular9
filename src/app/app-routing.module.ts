@@ -16,7 +16,8 @@ const routes: Routes = [
   // { path: 'blog', component: BlogComponent },
   { path: 'blog/list', component: BlogListComponent },
   { path: 'blog/detail/:id', component: BlogDetailComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'custom_error', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/custom_error' }
 ];
 const components: any = [
   NavbarComponent,
