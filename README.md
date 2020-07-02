@@ -17,10 +17,18 @@ Update npm to install all dependency
     npm install
 ```
 # Setup environment
-add below lines in your environment file
+add below lines in your environment file environment.ts at envirement const
 ```bash
     baseUrl: "https://node-js-resume-api.herokuapp.com",
     postCategory: ['News', 'Technical', 'Educational', 'Entertainment']
+```
+eg:
+```bash
+    export const environment = {
+        production: false,
+        baseUrl: "https://node-js-resume-api.herokuapp.com",
+        postCategory: ['News', 'Technical', 'Educational', 'Entertainment']
+    };
 ```
 ## Development server
 
