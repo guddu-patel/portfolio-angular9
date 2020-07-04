@@ -12,42 +12,18 @@
                 <li *ngFor="let blog of blogs;trackBy: trackblog;let i=index" [routerLink]="['/blog/detail',blog._id]">
                     <div class="blog-post-box">
                         <div class="blog-post-img"><img src="{{imgBase}}/{{blog.post_image}}" alt=""
-                                style="height: 250px;" /> <b class="post-date">{{blog.updatedAt | date:'E, d MMM'}}
+                                style="height: 250px;" onerror='this.src="../../assets/images/no-image.png"' /> <b
+                                class="post-date">{{blog.updatedAt | date:'E, d MMM'}}
                                 <span>{{blog.updatedAt | date:'y'}}</span></b>
                         </div>
                         <div class="blog-content">
-                            <p class="category">All</p>
+                            <p class="category text-capitalize">{{blog.category}}</p>
                             <h5 class="lineText1"><a href="#">{{blog.title}}</a></h5>
                             <p class="lineText5">{{blog.description}}</p>
                         </div>
                     </div>
                 </li>
-                <!-- <li>
-                    <div class="blog-post-box os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.4s">
-                        <div class="blog-post-img"> <a href="#"><img src="assets/images/blog2.jpg" alt="" /> <b
-                                    class="post-date">21th April <span>2016</span></b> </a> </div>
-                        <div class="blog-content">
-                            <p class="category">Category</p>
-                            <h5><a href="#">Inventore adipisci excepturi dolorum</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore adipisci
-                                excepturi dolorum. Lorem
-                                ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-post-box os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.6s">
-                        <div class="blog-post-img"> <a href="#"><img src="assets/images/blog3.jpg" alt="" /> <b
-                                    class="post-date">14th April <span>2016</span></b> </a> </div>
-                        <div class="blog-content">
-                            <p class="category">Category</p>
-                            <h5><a href="#">Inventore adipisci excepturi dolorum</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore adipisci
-                                excepturi dolorum. Lorem
-                                ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </li> -->
+
             </ul>
         </div>
         <div class="row">

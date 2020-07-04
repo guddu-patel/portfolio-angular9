@@ -5,11 +5,13 @@
         <div class="row ">
             <div class="col-sm-8">
                 <div *ngIf="selectedPost" class="blog-post-box">
-                    <div class="blog-post-img"> <img src="{{imgBase}}/{{selectedPost.post_image}}" alt="" />
+                    <div class="blog-post-img">
+                        <img src="{{imgBase}}/{{selectedPost.post_image}}"
+                            onerror='this.src="../../assets/images/no-image.png"' alt="" />
                         <b class="post-date">{{selectedPost.updatedAt | date:'E, d MMM'}}
                             <span>{{selectedPost.updatedAt | date:'y'}}</span></b> </div>
                     <div class="blog-content">
-                        <p class="category">All</p>
+                        <p class="category text-capitalize">{{selectedPost.category||'All'}}</p>
                         <h5>{{selectedPost.title}}</h5>
                         <p>{{selectedPost.description}}</p>
                         <div *ngIf="selectedPost.page_content" [innerHTML]="selectedPost.page_content"></div>
@@ -34,7 +36,8 @@
                                     <div class="media" [routerLink]="['/blog/detail',latest._id]">
                                         <a class="pull-left">
                                             <img class="media-object" style="width: 50px;height: 50px;"
-                                                src="http://placekitten.com/150/150">
+                                                src="{{imgBase}}/{{latest.post_image}}"
+                                                onerror='this.src="../../assets/images/no-image.png"'>
                                         </a>
                                         <div class="media-body">
                                             <h5 class="media-heading lineText1">{{latest.title}}</h5>
@@ -89,7 +92,8 @@
                             <div class="media" [routerLink]="['/blog/detail',latest._id]">
                                 <a class="pull-left">
                                     <img class="media-object" style="width: 50px;height: 50px;"
-                                        src="http://placekitten.com/150/150">
+                                        src="{{imgBase}}/{{latest.post_image}}"
+                                        onerror='this.src="../../assets/images/no-image.png"'>
                                 </a>
                                 <div class="media-body">
                                     <h5 class="media-heading lineText1">{{latest.title}}</h5>
